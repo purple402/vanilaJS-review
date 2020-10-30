@@ -16,7 +16,7 @@ li {
   display: flex;
   align-items: center;
 }
-
+/*
 button {
   border: 1px solid rgba(0, 0, 0, 0.7);
   width: 10px;
@@ -24,14 +24,14 @@ button {
   margin-right: 5px;
   background-color: transparent;
 }
-
+*/
 #delBtn {
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 5px;
-  font-size: 10px;
+  text-decoration: none;
 }
 
 .checked {

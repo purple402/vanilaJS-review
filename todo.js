@@ -32,9 +32,17 @@ function deleteToDo(event){
     }
 }
 
+function unCheckToDo(event){
+    //체크 푸는 함수
+    //현재는 checkde 된것을 누르면 check와 unchecked 함께 실행됨
+}
+
 function checkToDo(event){
     const btn = event.target;
     const li = btn.parentNode;
+    const checkBtn = li.querySelector(".fa-square");
+    checkBtn.classList.remove("fa-square");
+    checkBtn.classList.add("fa-check-square");
     checkedToDoList.appendChild(li);
     const cleanToDos = toDos.filter(function(toDo) {
         return JSON.stringify(toDo.id) !== li.id;
@@ -55,10 +63,11 @@ function saveToDos(LS, TODOS){
 function paintToDo(text, list){
     const li = document.createElement("li");
     const textli = document.createTextNode(text);
-    const checkBtn = document.createElement("button");
-    const delBtn = document.createElement("button");
+    const checkBtn = document.createElement("icon");
+    const delBtn = document.createElement("icon");
     const newId = Date.now() + toDos.length;
-    delBtn.innerText = "❌";
+    checkBtn.classList.add('far', 'fa-square');
+    delBtn.classList.add('far', 'fa-trash-alt');
     li.appendChild(checkBtn);
     li.appendChild(textli);
     li.appendChild(delBtn);
@@ -75,6 +84,9 @@ function paintToDo(text, list){
     toDos.push(toDoObj);
     saveToDos(TODOS_LS, toDos)
     } else {
+    checkBtn.classList.remove("fa-square");
+    checkBtn.classList.add("fa-check-square");
+    checkBtn.addEventListener("click", unCheckToDo);
     checkedToDos.push(toDoObj);
     saveToDos(CHECKED_LS, checkedToDos)
     }
