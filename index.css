@@ -6,3 +6,36 @@
 .showing {
   display: block;
 }
+
+ul {
+  padding-left: 0px;
+}
+
+li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+button {
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  width: 10px;
+  height: 13px;
+  margin-right: 5px;
+  background-color: transparent;
+}
+
+#delBtn {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  font-size: 10px;
+}
+
+.checked {
+  text-decoration: line-through;
+  text-decoration-color: tomato;
+  list-style-position: inside;
+}
