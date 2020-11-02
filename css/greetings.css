@@ -1,0 +1,12 @@
+.form,
+.greetings {
+  display: none;
+}
+
+.showing {
+  display: block;
+}
+
+input {
+  margin: 10px 0px;
+}

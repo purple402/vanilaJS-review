@@ -1,14 +1,12 @@
-.form,
-.greetings {
-  display: none;
-}
-
-.showing {
-  display: block;
+input {
 }
 
 ul {
   padding-left: 0px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0px;
 }
 
 li {
@@ -19,15 +17,16 @@ li {
   width: 200px;
 }
 
-span {
+li span {
   margin-left: 5px;
+  font-weight: 700;
 }
 
 #delBtn {
   border: none;
   position: absolute;
   text-decoration: none;
-  right: 10px;
+  right: 0px;
 }
 
 .checked .fa-check-square {
