@@ -22,7 +22,6 @@ function deleteToDo(event){
         toDos = cleanToDos;
         saveToDos(TODOS_LS, toDos);
     } else {
-        console.log(className);
         checkedToDoList.removeChild(li);
         const cleanToDos = checkedToDos.filter(function(toDo) {
             return JSON.stringify(toDo.id) !== li.id;
@@ -33,25 +32,60 @@ function deleteToDo(event){
 }
 
 function unCheckToDo(event){
-    //체크 푸는 함수
-    //현재는 checkde 된것을 누르면 check와 unchecked 함께 실행됨
+    const btn = event.target;
+    const li = btn.parentNode;
+    const checkBtn = li.querySelector(".fa-check-square");
+    const line = document.querySelector("#strikeout");
+    // checked list에 li 추가(HTML)
+    checkBtn.classList.remove("fa-check-square");
+    checkBtn.classList.add("fa-square");
+    checkBtn.removeEventListener("click", unCheckToDo);
+    checkBtn.addEventListener("click", checkToDo);
+    li.removeChild(line);
+    toDoList.appendChild(li);
+    // 클릭되지 않은것 - cleanToDos에 넣음
+    const cleanToDos = checkedToDos.filter(function(toDo) {
+        return JSON.stringify(toDo.id) !== li.id;
+    })
+    // 클릭된 것 - checkedToDos에 넣음
+    const checkToDos = checkedToDos.filter(function(toDo){
+        return JSON.stringify(toDo.id) === li.id;
+    })
+    // 남은것들 = checkedToDos
+    checkedToDos = cleanToDos;
+    // 클릭된 것은 기존 toDos 뒤에 붙임
+    toDos = toDos.concat(checkToDos);
+    //각각 Local Storage에 저장
+    saveToDos(TODOS_LS, toDos);
+    saveToDos(CHECKED_LS, checkedToDos);
 }
 
 function checkToDo(event){
     const btn = event.target;
     const li = btn.parentNode;
     const checkBtn = li.querySelector(".fa-square");
+    const line = document.createElement("div");
+    // checked list에 li 추가(HTML)
     checkBtn.classList.remove("fa-square");
     checkBtn.classList.add("fa-check-square");
+    checkBtn.removeEventListener("click", checkToDo);
+    checkBtn.addEventListener("click", unCheckToDo);
+    li.appendChild(line);
+    line.id = 'strikeout';
     checkedToDoList.appendChild(li);
+    // 클릭되지 않은것 - cleanToDos에 넣음
     const cleanToDos = toDos.filter(function(toDo) {
         return JSON.stringify(toDo.id) !== li.id;
     })
+    // 클릭된 것 - checkedToDos에 넣음
     const checkToDos = toDos.filter(function(toDo){
         return JSON.stringify(toDo.id) === li.id;
     })
+    // 남은것들 = toDos
     toDos = cleanToDos;
+    // 클릭된 것은 기존 checkedToDos 뒤에 붙임
     checkedToDos = checkedToDos.concat(checkToDos);
+    //각각 Local Storage에 저장
     saveToDos(TODOS_LS, toDos);
     saveToDos(CHECKED_LS, checkedToDos);
 }
@@ -62,18 +96,19 @@ function saveToDos(LS, TODOS){
 
 function paintToDo(text, list){
     const li = document.createElement("li");
-    const textli = document.createTextNode(text);
+    const textli = document.createElement("span");
     const checkBtn = document.createElement("icon");
     const delBtn = document.createElement("icon");
     const newId = Date.now() + toDos.length;
+    const line = document.createElement("div");
     checkBtn.classList.add('far', 'fa-square');
     delBtn.classList.add('far', 'fa-trash-alt');
+    textli.innerHTML = text;
     li.appendChild(checkBtn);
     li.appendChild(textli);
     li.appendChild(delBtn);
     delBtn.id = "delBtn"
     li.id = newId;
-    checkBtn.addEventListener("click", checkToDo);
     delBtn.addEventListener("click", deleteToDo);
     list.appendChild(li); //화면에 todo 생성
     const toDoObj = {
@@ -81,12 +116,15 @@ function paintToDo(text, list){
         id: newId
     }
     if (list.classList.contains('toDoList')){
+    checkBtn.addEventListener("click", checkToDo);
     toDos.push(toDoObj);
     saveToDos(TODOS_LS, toDos)
     } else {
     checkBtn.classList.remove("fa-square");
     checkBtn.classList.add("fa-check-square");
     checkBtn.addEventListener("click", unCheckToDo);
+    li.appendChild(line);
+    line.id = 'strikeout';
     checkedToDos.push(toDoObj);
     saveToDos(CHECKED_LS, checkedToDos)
     }
