@@ -1,5 +1,5 @@
-const clockContainer = document.querySelector(".js-clock"),
-clockTitle = clockContainer.querySelector("h1");
+const ampm = document.querySelector(".js-ampm"),
+clockTitle = document.querySelector(".js-time");
 
 function getTime(){
     const date = new Date();
@@ -10,8 +10,9 @@ function getTime(){
 
     if (hours > 12) {hours = hours - 12; ap = "PM"} else {ap = "AM"};
     if (hours == 0) {hours = 12};
-
-    clockTitle.innerText = `${ap} ${hours < 10 ? `0${hours}` : hours} : ${minutes < 10 ? `0${minutes}` : minutes} : ${seconds < 10 ? `0${seconds}` : seconds}`;
+    
+    ampm.innerText = `${ap}`;
+    clockTitle.innerText = `${hours < 10 ? `0${hours}` : hours} : ${minutes < 10 ? `0${minutes}` : minutes} : ${seconds < 10 ? `0${seconds}` : seconds}`;
     
 }
 
