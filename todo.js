@@ -5,6 +5,7 @@ const toDoForm = document.querySelector(".js-toDoForm"),
 
 const TODOS_LS = 'toDos';
 const CHECKED_LS = 'checkedToDos';
+
 let toDos = [];
 let checkedToDos = [];
 

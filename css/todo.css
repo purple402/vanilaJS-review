@@ -1,12 +1,10 @@
-input {
+.toDoForm input {
+  width: 200px;
 }
 
 ul {
-  padding-left: 0px;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 10px;
-  border-radius: 5px;
-  margin: 10px 0px;
+  margin: 10px;
+  padding-inline-start: 0px;
 }
 
 li {
@@ -15,22 +13,31 @@ li {
   position: relative;
   align-items: center;
   width: 200px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 2px;
 }
 
 li span {
   margin-left: 5px;
   font-weight: 700;
+  font-size: 13px;
+}
+
+.checked li {
+  opacity: 0.7;
+}
+
+.checked .fa-check-square {
+  color: tomato;
 }
 
 #delBtn {
   border: none;
   position: absolute;
   text-decoration: none;
-  right: 0px;
-}
-
-.checked .fa-check-square {
-  color: tomato;
+  right: 5px;
 }
 
 #strikeout {
