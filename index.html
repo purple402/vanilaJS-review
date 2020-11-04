@@ -7,25 +7,27 @@
     <title>Momentum</title>
 </head>
 <body>
-    <div class="js-clock">
+    <div class="body_column">
+    <div class="js-clock clock">
         <h1>
             <span class="js-ampm ampm">am/pm</span>
             <span class="js-time time">00:00</span>
         </h1>
     </div>
-
-    <form class="js-form form">
+    <form class="js-form greeting_form">
         <input type="text" placeholder="What is your name?">
     </form>
-
     <h4 class="js-greetins greetings"></h4>
+    <span class="js-weather weather"></span>
+    </div>
 
+    <div class="body_column todo_column">
     <form class="js-toDoForm toDoForm">
         <input type="text" placeholder="Write a to do">
     </form>
     <ul class="js-toDoList toDoList"></ul>
     <ul class="js-checkedToDoList checked"></ul>
-    
+    </div>
 
     <script src="clock.js"></script>
     <script src="greeting.js"></script>
