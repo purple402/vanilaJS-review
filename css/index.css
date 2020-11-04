@@ -1,20 +1,31 @@
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap");
-
+@import "reset.css";
 @import "clock.css";
+@import "greetings.css";
 @import "todo.css";
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+@font-face {
+  font-family: "SDGothic";
+  src: url("font/AppleSDGothicNeoM.ttf") format("truetype");
+  font-weight: normal;
+}
+
 body {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: "Montserrat", "SDGothic", "Malgun Gothic", sans-serif;
 }
 
 img {
   position: absolute;
   top: 0px;
+  left: 0px;
   z-index: -1;
   height: 100%;
+  filter: brightness(70%);
 }
 
 @media screen and (min-width: 555px) {
@@ -23,15 +34,38 @@ img {
   }
 }
 
-.form,
-.greetings {
-  display: none;
-}
-
-.showing {
-  display: block;
+.body_column {
+  width: 230px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  position: relative;
 }
 
 input {
-  margin: 10px 0px;
+  border: none;
+  font-size: 13px;
+  background-color: transparent;
+  box-sizing: border-box;
+  padding: 3px 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
 }
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: inherit;
+}
+
+input:focus {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/*
+@font-face {
+  font-family: 'SDGothic';
+  src: url('font/AppleSDGothicNeoB.ttf') format('truetype');
+  font-weight: bold;
+}
+*/

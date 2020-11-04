@@ -1,9 +1,29 @@
+.clock {
+  /* position: relative; */
+  margin-top: 130px;
+  position: absolute;
+  left: 24px;
+}
+
 .ampm {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .time {
   font-size: 30px;
-  letter-spacing: -3px;
-  word-spacing: -2px;
+}
+
+.greeting_form,
+.greetings,
+.weather {
+  position: relative;
+}
+
+.greeting_form,
+.greetings {
+  top: 170px;
+}
+
+.weather {
+  top: 200px;
 }

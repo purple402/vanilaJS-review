@@ -1,5 +1,20 @@
-.toDoForm input {
-  width: 200px;
+.toDoForm input,
+li {
+  width: 180px;
+}
+
+.toDoForm {
+  margin-top: 10px;
+}
+
+.toDoForm input::placeholder {
+  font-size: 13px;
+}
+
+.todo_column {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  box-sizing: border-box;
 }
 
 ul {
@@ -12,17 +27,17 @@ li {
   display: flex;
   position: relative;
   align-items: center;
-  width: 200px;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 5px;
-  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 10px 8px;
+  border-radius: 3px;
   margin-bottom: 2px;
+  color: black;
+  font-size: 10px;
 }
 
 li span {
   margin-left: 5px;
-  font-weight: 700;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 .checked li {
@@ -37,13 +52,13 @@ li span {
   border: none;
   position: absolute;
   text-decoration: none;
-  right: 5px;
+  right: 10px;
 }
 
 #strikeout {
   height: 1px;
-  width: 78%;
+  width: 79%;
   background-color: tomato;
   position: absolute;
-  left: 17px;
+  left: 19px;
 }
