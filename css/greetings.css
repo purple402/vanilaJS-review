@@ -1,4 +1,5 @@
 .form,
+.greeting_form,
 .greetings {
   display: none;
 }
@@ -10,4 +11,36 @@
 .greeting_form input,
 .greeting_form input::placeholder {
   text-align: center;
+}
+
+.clock {
+  margin-top: 110px;
+  position: absolute;
+  left: 9px;
+}
+
+.ampm {
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.time {
+  font-size: 40px;
+  word-spacing: -4px;
+  letter-spacing: -1px;
+}
+
+.greeting_form,
+.greetings,
+.weather {
+  position: relative;
+}
+
+.greeting_form,
+.greetings {
+  top: 170px;
+}
+
+.weather {
+  top: 200px;
 }
