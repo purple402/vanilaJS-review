@@ -42,5 +42,32 @@
 }
 
 .weather {
-  top: 200px;
+  top: 180px;
+}
+
+.weather_icon {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wi {
+  font-size: 30px;
+}
+
+.weather_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.temp {
+  font-size: 18px;
+  margin-bottom: 3px;
+  margin-left: 8px;
+}
+
+.place {
+  font-size: 11px;
 }
