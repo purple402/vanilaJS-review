@@ -1,5 +1,4 @@
 @import "reset.css";
-@import "clock.css";
 @import "greetings.css";
 @import "todo.css";
 
@@ -17,6 +16,7 @@ body {
   justify-content: space-around;
   align-items: center;
   font-family: "Montserrat", "SDGothic", "Malgun Gothic", sans-serif;
+  padding: 0px 40px;
 }
 
 img {
