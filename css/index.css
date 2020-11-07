@@ -14,10 +14,10 @@
 body {
   height: 100vh;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   font-family: "Montserrat", "SDGothic", "Malgun Gothic", sans-serif;
-  padding: 0px 40px;
+  padding: 0px 100px;
 }
 
 img {
@@ -36,7 +36,7 @@ img {
 }
 
 .body_column {
-  width: 230px;
+  width: 460px;
   height: 80vh;
   display: flex;
   flex-direction: column;
@@ -47,10 +47,10 @@ img {
 
 input {
   border: none;
-  font-size: 13px;
+  font-size: 26px;
   background-color: transparent;
   box-sizing: border-box;
-  padding: 3px 5px;
+  padding: 6px 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.7);
 }
 
