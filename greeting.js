@@ -52,6 +52,6 @@ function loadName(){
 
 function init() {
     loadName();
-    setInterval(paintGreeting, 60000);
+    setInterval(loadName, 60000);
 }
 init();
