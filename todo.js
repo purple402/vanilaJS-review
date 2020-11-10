@@ -36,7 +36,7 @@ function unCheckToDo(event){
     const btn = event.target;
     const li = btn.parentNode;
     const checkBtn = li.querySelector(".fa-check-square");
-    const line = document.querySelector("#strikeout");
+    const line = li.querySelector("#strikeout");
     // checked list에 li 추가(HTML)
     checkBtn.classList.remove("fa-check-square");
     checkBtn.classList.add("fa-square");
