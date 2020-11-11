@@ -72,3 +72,9 @@ li span {
   position: absolute;
   left: 38px;
 }
+
+.fa-square,
+.fa-check-square,
+#delBtn {
+  cursor: pointer;
+}
