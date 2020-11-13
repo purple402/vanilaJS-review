@@ -23,26 +23,16 @@
   left: 10px;
 }
 
-/* .ampm {
-  font-size: 30px;
-  margin-right: 10px;
-}
-
-.time {
-  font-size: 80px;
-  word-spacing: -8px;
-  letter-spacing: -2px;
-} */
-
 .ampm {
   font-size: 50px;
-  margin-right: 8px;
+  margin-right: 5px;
+  margin-left: 18px;
 }
 
 .time {
   font-size: 120px;
-  word-spacing: -15px;
-  letter-spacing: -3px;
+  word-spacing: -18px;
+  letter-spacing: -5px;
 }
 
 .greeting_form,
