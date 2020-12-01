@@ -92,6 +92,7 @@ function checkToDo(event){
 }
 
 function saveToDos(LS, TODOS){
+    // 바로 todoObj를 받아서 저장하게되면 localStorage에 축적되는 것이 아니라 대체된다(가장최근의 todoObj만 저장됨)
     localStorage.setItem(LS, JSON.stringify(TODOS));
 }
 
