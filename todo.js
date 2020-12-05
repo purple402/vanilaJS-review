@@ -21,14 +21,14 @@ function deleteToDo(event){
             return JSON.stringify(toDo.id) !== li.id;
         })
         toDos = cleanToDos;
-        saveToDos(TODOS_LS, toDos);
+        saveToDos(TODOS_LS);
     } else {
         checkedToDoList.removeChild(li);
         const cleanToDos = checkedToDos.filter(function(toDo) {
             return JSON.stringify(toDo.id) !== li.id;
         })
         checkedToDos = cleanToDos;
-        saveToDos(CHECKED_LS, checkedToDos);
+        saveToDos(CHECKED_LS);
     }
 }
 
@@ -57,8 +57,8 @@ function unCheckToDo(event){
     // 클릭된 것은 기존 toDos 뒤에 붙임
     toDos = toDos.concat(checkToDos);
     //각각 Local Storage에 저장
-    saveToDos(TODOS_LS, toDos);
-    saveToDos(CHECKED_LS, checkedToDos);
+    saveToDos(TODOS_LS);
+    saveToDos(CHECKED_LS);
 }
 
 function checkToDo(event){
@@ -87,13 +87,20 @@ function checkToDo(event){
     // 클릭된 것은 기존 checkedToDos 뒤에 붙임
     checkedToDos = checkedToDos.concat(checkToDos);
     //각각 Local Storage에 저장
-    saveToDos(TODOS_LS, toDos);
-    saveToDos(CHECKED_LS, checkedToDos);
+    saveToDos(TODOS_LS);
+    saveToDos(CHECKED_LS);
 }
 
-function saveToDos(LS, TODOS){
-    // 바로 todoObj를 받아서 저장하게되면 localStorage에 축적되는 것이 아니라 대체된다(가장최근의 todoObj만 저장됨)
-    localStorage.setItem(LS, JSON.stringify(TODOS));
+function saveToDos(LS){
+    switch(LS) {
+        case CHECKED_LS :
+            localStorage.setItem(CHECKED_LS, JSON.stringify(checkedToDos));
+            break;
+        case TODOS_LS :
+            localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
+            break;
+    }
+    
 }
 
 function paintToDo(text, list){
@@ -128,7 +135,7 @@ function paintToDo(text, list){
     li.appendChild(line);
     line.id = 'strikeout';
     checkedToDos.push(toDoObj);
-    saveToDos(CHECKED_LS, checkedToDos)
+    saveToDos(CHECKED_LS)
     }
 }
 
