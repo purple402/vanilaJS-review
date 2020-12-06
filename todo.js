@@ -91,6 +91,7 @@ function checkToDo(event){
     saveToDos(CHECKED_LS);
 }
 
+//각각 Local Storage에 저장
 function saveToDos(LS){
     switch(LS) {
         case CHECKED_LS :
@@ -151,7 +152,7 @@ function paintToDo(text, LS){
 function handleSubmitToDo(event){
     event.preventDefault();
     const currentValue = toDoInput.value;
-    paintToDo(currentValue, toDoList);
+    paintToDo(currentValue, TODOS_LS);
     toDoInput.value = ""; //submit 후 input창 초기화
 }
 
