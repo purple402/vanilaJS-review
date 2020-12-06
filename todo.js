@@ -72,7 +72,7 @@ function cleanToDos(TODOS, id){
 }
 
 function selectedToDo(TODOS, id){
-    // 클릭된 것 - clickedToDos에 넣음
+    // 클릭된 것 골라서 clickedToDos에 넣음
     const clickedToDo = TODOS.filter(function(toDo){
         return JSON.stringify(toDo.id) === id;
     })
