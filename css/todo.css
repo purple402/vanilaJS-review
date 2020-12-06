@@ -75,6 +75,21 @@ li span {
 
 .fa-square,
 .fa-check-square,
-#delBtn {
+#delBtn,
+.clear span:hover {
   cursor: pointer;
 }
+
+.toDoList,
+.checked {
+  margin: 10px;
+}
+
+.list-title {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 15px;
+  margin: 15px 0px 0px 0px;
+}
+
