@@ -146,19 +146,19 @@ function handleSubmitToDo(event){
     toDoInput.value = ""; //submit 후 input창 초기화
 }
 
-function loadToDos(LS, LIST){
+function loadToDos(LS){
     const loadedToDos = localStorage.getItem(LS);
     if (loadedToDos !== null){
         const parsedToDos = JSON.parse(loadedToDos);
         parsedToDos.forEach(function(toDo){
-            paintToDo(toDo.text, LIST);
+            paintToDo(toDo.text, LS);
         })
     }
 }
 
 function init(){
-    loadToDos(TODOS_LS, toDoList);
-    loadToDos(CHECKED_LS, checkedToDoList);
+    loadToDos(TODOS_LS);
+    loadToDos(CHECKED_LS);
     toDoForm.addEventListener("submit", handleSubmitToDo)
 }
 init();
