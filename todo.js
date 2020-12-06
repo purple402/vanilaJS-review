@@ -17,17 +17,11 @@ function deleteToDo(event){
     //체크되지 않은것과 체크된것 나눠서 삭제
     if (listName.classList.contains('toDoList')){
         toDoList.removeChild(li);
-        const cleanToDos = toDos.filter(function(toDo) {
-            return JSON.stringify(toDo.id) !== li.id;
-        })
-        toDos = cleanToDos;
+        cleanToDos(toDos, li.id);
         saveToDos(TODOS_LS);
     } else {
         checkedToDoList.removeChild(li);
-        const cleanToDos = checkedToDos.filter(function(toDo) {
-            return JSON.stringify(toDo.id) !== li.id;
-        })
-        checkedToDos = cleanToDos;
+        cleanToDos(checkedToDos, li.id);
         saveToDos(CHECKED_LS);
     }
 }
@@ -44,15 +38,29 @@ function unCheckToDo(event){
     checkBtn.addEventListener("click", checkToDo);
     li.removeChild(line);
     toDoList.appendChild(li);
+    
     selectedToDo(checkedToDos, li.id);
+    cleanToDos(checkedToDos, li.id);
     saveToDos(TODOS_LS);
+    saveToDos(CHECKED_LS);
+}
+
+function cleanToDos(TODOS, id){
     // 클릭되지 않은것 - cleanToDos에 넣음
-    const cleanToDos = checkedToDos.filter(function(toDo) {
-        return JSON.stringify(toDo.id) !== li.id;
+    const cleanToDos = TODOS.filter(function(todo){
+        return JSON.stringify(todo.id) !== id;
     })
-    // 클릭된 것 - checkedToDos에 넣음
-    const checkToDos = checkedToDos.filter(function(toDo){
-        return JSON.stringify(toDo.id) === li.id;
+    // 남은것들 남겨둠
+    switch(TODOS){
+        case toDos:
+            toDos = cleanToDos;
+            break;
+        case checkedToDos:
+            checkedToDos = cleanToDos;
+            break;
+    }
+}
+
 function selectedToDo(TODOS, id){
     // 클릭된 것 - clickedToDos에 넣음
     const clickedToDo = TODOS.filter(function(toDo){
@@ -82,14 +90,9 @@ function checkToDo(event){
     li.appendChild(line);
     line.id = 'strikeout';
     checkedToDoList.appendChild(li);
-    // 클릭되지 않은것 - cleanToDos에 넣음
-    const cleanToDos = toDos.filter(function(toDo) {
-        return JSON.stringify(toDo.id) !== li.id;
-    })
-    // 남은것들 = toDos
-    toDos = cleanToDos;
     
     selectedToDo(toDos, li.id);
+    cleanToDos(toDos, li.id);
     saveToDos(TODOS_LS);
     saveToDos(CHECKED_LS);
 }
