@@ -13,9 +13,9 @@ let checkedToDos = [];
 function deleteToDo(event){
     const btn = event.target;
     const li = btn.parentNode;
-    const className = event.path[2]; //클릭된 버튼의 상위클래스
+    const listName = event.path[2]; //클릭된 버튼의 상위클래스
     //체크되지 않은것과 체크된것 나눠서 삭제
-    if (className.classList.contains('toDoList')){
+    if (listName.classList.contains('toDoList')){
         toDoList.removeChild(li);
         const cleanToDos = toDos.filter(function(toDo) {
             return JSON.stringify(toDo.id) !== li.id;
