@@ -78,3 +78,10 @@
 .place {
   font-size: 20px;
 }
+
+.api-message {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 500px;
+}
