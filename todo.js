@@ -103,39 +103,48 @@ function saveToDos(LS){
     
 }
 
-function paintToDo(text, list){
+function paintToDo(text, LS){
     const li = document.createElement("li");
     const textli = document.createElement("span");
     const checkBtn = document.createElement("icon");
+    const checkedBtn = document.createElement("icon");
     const delBtn = document.createElement("icon");
-    const newId = Date.now() + toDos.length;
+    const newId = Date.now() + Math.random();
     const line = document.createElement("div");
-    checkBtn.classList.add('far', 'fa-square');
-    delBtn.classList.add('far', 'fa-trash-alt');
-    textli.innerHTML = text;
-    li.appendChild(checkBtn);
-    li.appendChild(textli);
-    li.appendChild(delBtn);
-    delBtn.id = "delBtn"
-    li.id = newId;
-    delBtn.addEventListener("click", deleteToDo);
-    list.appendChild(li); //화면에 todo 생성
     const toDoObj = {
         text: text,
         id: newId
     }
-    if (list.classList.contains('toDoList')){
+    
+    textli.innerHTML = text;
+    checkBtn.classList.add('far', 'fa-square');
+    checkedBtn.classList.add('far', "fa-check-square");
+    delBtn.classList.add('far', 'fa-trash-alt');
     checkBtn.addEventListener("click", checkToDo);
-    toDos.push(toDoObj);
-    saveToDos(TODOS_LS, toDos)
-    } else {
-    checkBtn.classList.remove("fa-square");
-    checkBtn.classList.add("fa-check-square");
-    checkBtn.addEventListener("click", unCheckToDo);
-    li.appendChild(line);
+    checkedBtn.addEventListener("click", unCheckToDo);
+    delBtn.addEventListener("click", deleteToDo);
+    delBtn.id = "delBtn";
     line.id = 'strikeout';
-    checkedToDos.push(toDoObj);
-    saveToDos(CHECKED_LS)
+    li.id = newId;
+
+    switch(LS){
+        case TODOS_LS:
+            li.appendChild(checkBtn);
+            li.appendChild(textli);
+            li.appendChild(delBtn);
+            toDoList.appendChild(li);
+            toDos.push(toDoObj);
+            saveToDos(TODOS_LS);
+            break;
+        case CHECKED_LS:
+            li.appendChild(checkedBtn);
+            li.appendChild(textli);
+            li.appendChild(delBtn);
+            li.appendChild(line);
+            checkedToDoList.appendChild(li);
+            checkedToDos.push(toDoObj);
+            saveToDos(CHECKED_LS);
+            break;
     }
 }
 
