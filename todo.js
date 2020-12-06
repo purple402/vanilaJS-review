@@ -44,6 +44,8 @@ function unCheckToDo(event){
     checkBtn.addEventListener("click", checkToDo);
     li.removeChild(line);
     toDoList.appendChild(li);
+    selectedToDo(checkedToDos, li.id);
+    saveToDos(TODOS_LS);
     // 클릭되지 않은것 - cleanToDos에 넣음
     const cleanToDos = checkedToDos.filter(function(toDo) {
         return JSON.stringify(toDo.id) !== li.id;
@@ -51,14 +53,20 @@ function unCheckToDo(event){
     // 클릭된 것 - checkedToDos에 넣음
     const checkToDos = checkedToDos.filter(function(toDo){
         return JSON.stringify(toDo.id) === li.id;
+function selectedToDo(TODOS, id){
+    // 클릭된 것 - clickedToDos에 넣음
+    const clickedToDo = TODOS.filter(function(toDo){
+        return JSON.stringify(toDo.id) === id;
     })
-    // 남은것들 = checkedToDos
-    checkedToDos = cleanToDos;
-    // 클릭된 것은 기존 toDos 뒤에 붙임
-    toDos = toDos.concat(checkToDos);
-    //각각 Local Storage에 저장
-    saveToDos(TODOS_LS);
-    saveToDos(CHECKED_LS);
+    // 클릭된 것은 옮겨질 list 뒤에 붙임
+    switch(TODOS){
+        case toDos:
+            checkedToDos = checkedToDos.concat(clickedToDo);
+            break;
+        case checkedToDos:
+            toDos = toDos.concat(clickedToDo);
+            break;
+    }
 }
 
 function checkToDo(event){
@@ -78,15 +86,10 @@ function checkToDo(event){
     const cleanToDos = toDos.filter(function(toDo) {
         return JSON.stringify(toDo.id) !== li.id;
     })
-    // 클릭된 것 - checkedToDos에 넣음
-    const checkToDos = toDos.filter(function(toDo){
-        return JSON.stringify(toDo.id) === li.id;
-    })
     // 남은것들 = toDos
     toDos = cleanToDos;
-    // 클릭된 것은 기존 checkedToDos 뒤에 붙임
-    checkedToDos = checkedToDos.concat(checkToDos);
-    //각각 Local Storage에 저장
+    
+    selectedToDo(toDos, li.id);
     saveToDos(TODOS_LS);
     saveToDos(CHECKED_LS);
 }
