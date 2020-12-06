@@ -1,7 +1,8 @@
 const toDoForm = document.querySelector(".js-toDoForm"),
     toDoInput = toDoForm.querySelector("input"),
     toDoList = document.querySelector(".js-toDoList"),
-    checkedToDoList = document.querySelector(".js-checkedToDoList");
+    checkedToDoList = document.querySelector(".js-checkedToDoList"),
+    clearBtn = document.querySelector(".js-clear-button");
 
 const TODOS_LS = 'toDos';
 const CHECKED_LS = 'checkedToDos';
@@ -9,6 +10,15 @@ const CHECKED_LS = 'checkedToDos';
 let toDos = [];
 let checkedToDos = [];
 
+function clearCompleted(){
+    // checked list의 li 제거(HTML)
+    while (checkedToDoList.firstChild) {
+        checkedToDoList.removeChild(checkedToDoList.lastChild);
+    }
+    // LS에서 제거
+    checkedToDos = [];
+    saveToDos(CHECKED_LS);
+}
 
 function deleteToDo(event){
     const btn = event.target;
@@ -175,6 +185,7 @@ function loadToDos(LS){
 function init(){
     loadToDos(TODOS_LS);
     loadToDos(CHECKED_LS);
-    toDoForm.addEventListener("submit", handleSubmitToDo)
+    toDoForm.addEventListener("submit", handleSubmitToDo);
+    clearBtn.addEventListener("click", clearCompleted);
 }
 init();
